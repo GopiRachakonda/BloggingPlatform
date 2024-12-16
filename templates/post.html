@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ post[1] }}</h1>
+<p>{{ post[2] }}</p>
+
+<h2>Comments</h2>
+<ul>
+    {% for comment in comments %}
+    <li>{{ comment[2] }}</li>
+    {% endfor %}
+</ul>
+
+<form action="{{ url_for('comment', post_id=post[0]) }}" method="POST">
+    <textarea name="content" required></textarea>
+    <button type="submit">Add Comment</button>
+</form>
+{% endblock %}

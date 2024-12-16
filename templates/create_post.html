@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create/Edit Post</h1>
+<form action="{{ url_for('create_post') if not post else url_for('edit_post', post_id=post[0]) }}" method="POST">
+    <input type="text" name="title" value="{{ post[1] if post else '' }}" placeholder="Title" required>
+    <textarea name="content" placeholder="Content" required>{{ post[2] if post else '' }}</textarea>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
